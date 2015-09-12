@@ -40,7 +40,7 @@ app.post( '/upload', uploadMiddleware.single( 'attachment' ), function( req, res
 });
 ```
 
-You will notice that we have not specified our AWS `access key` or `secret access key`. This is because you can't pass your AWS credentials directly to the Multer-Storage-S3. It would be pretty dangerous to have those credentials written in the code that you will most likely store on GitGub or some other repository. Instead, you should set those parameters as an environment variables.
+You will notice that we have not specified our AWS `access key` or `secret access key`. This is because you can't pass your AWS credentials directly to the Multer-Storage-S3. It would be pretty dangerous to have those credentials written in the code that you will most likely store on GitHub or some other repository. Instead, you should set those parameters as an environment variables.
 
 The easiest way to do that is to use a `dotenv` npm package in your project (as soon as possible):
 

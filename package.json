@@ -1,0 +1,32 @@
+{
+  "name": "multer-storage-s3",
+  "version": "1.0.0",
+  "description": "AWS S3 Multer Storage Engine",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OriginalEXE/Multer-Storage-S3.git"
+  },
+  "keywords": [
+    "multer",
+    "s3",
+    "aws",
+    "amazon",
+    "node.js"
+  ],
+  "author": "originalexe",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/OriginalEXE/Multer-Storage-S3/issues"
+  },
+  "homepage": "https://github.com/OriginalEXE/Multer-Storage-S3#readme",
+  "dependencies": {
+    "aws-sdk": "^2.2.0",
+    "crypto": "0.0.3",
+    "dotenv": "^1.2.0",
+    "path": "^0.11.14"
+  }
+}

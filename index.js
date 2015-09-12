@@ -1,4 +1,3 @@
-var dotenv = require( 'dotenv' ).config({ silent: true });
 var path = require('path');
 var crypto = require('crypto');
 var AWS = require( 'aws-sdk' );

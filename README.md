@@ -35,7 +35,7 @@ var uploadMiddleware = multer({ storage: storage });
 
 app.post( '/upload', uploadMiddleware.single( 'attachment' ), function( req, res, next ) {
 
-	res.send( 'File was uploaded succsessfully!' );
+	res.send( 'File was uploaded successfully!' );
 
 });
 ```

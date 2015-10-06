@@ -99,9 +99,13 @@ S3Storage.prototype._handleFile = function _handleFile( req, file, cb ) {
 
 					cb( null, {
 						destination: destination,
-						filename: filename,
-						path: finalPath,
-						size: size
+						filename   : filename,
+						path       : finalPath,
+						size       : size,
+						s3         : {
+							ETag    : data.ETag,
+							Location: data.Location
+						}
 					});
 
 				}

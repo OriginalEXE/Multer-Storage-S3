@@ -1,5 +1,6 @@
 var path = require('path');
 var crypto = require('crypto');
+var mime = require('mime-types');
 var AWS = require( 'aws-sdk' );
 
 function getFilename( req, file, cb ) {
@@ -74,12 +75,18 @@ S3Storage.prototype._handleFile = function _handleFile( req, file, cb ) {
 			}
 
 			var finalPath = path.join( destination, filename ),
-				size;
+				size,
+				contentType = mime.lookup(finalPath),
+				params = {
+					Key: finalPath,
+					Body: file.stream
+				};
 
-			self.s3obj.upload({
-				Key: finalPath,
-				Body: file.stream
-			})
+			if ( contentType ) {
+				params.ContentType = contentType;
+			}
+
+			self.s3obj.upload(params)
 			.on( 'httpUploadProgress', function( info){
 
 				if ( info.total ) {

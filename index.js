@@ -1,6 +1,6 @@
-var path = require('path');
-var crypto = require('crypto');
-var mime = require('mime-types');
+var path = require( 'path' );
+var crypto = require( 'crypto' );
+var mime = require( 'mime-types' );
 var AWS = require( 'aws-sdk' );
 
 function getFilename( req, file, cb ) {
@@ -76,54 +76,57 @@ S3Storage.prototype._handleFile = function _handleFile( req, file, cb ) {
 
 			var finalPath = path.join( destination, filename ),
 				size,
-				contentType = mime.lookup(finalPath),
+				contentType = mime.lookup( finalPath ),
 				params = {
-					Key: finalPath,
+					Key : finalPath,
 					Body: file.stream
 				};
 
 			if ( contentType ) {
+				
 				params.ContentType = contentType;
+				
 			}
 
-			self.s3obj.upload(params)
-			.on( 'httpUploadProgress', function( info){
+			self.s3obj
+				.upload( params )
+				.on( 'httpUploadProgress', function( info ){
 
-				if ( info.total ) {
+					if ( info.total ) {
 
-					size = info.total;
+						size = info.total;
 
-				}
+					}
 
-			})
-			.send( function( err, data ) {
+				})
+				.send( function( err, data ) {
 
-				if ( err ) {
+					if ( err ) {
 
-					cb( err, data );
+						cb( err, data );
 
-				} else {
+					} else {
 
-					cb( null, {
-						destination: destination,
-						filename   : filename,
-						path       : finalPath,
-						size       : size,
-						s3         : {
-							ETag    : data.ETag,
-							Location: data.Location
-						}
-					});
+						cb( null, {
+							destination: destination,
+							filename   : filename,
+							path       : finalPath,
+							size       : size,
+							s3         : {
+								ETag    : data.ETag,
+								Location: data.Location
+							}
+						});
 
-				}
+					}
 
-			});
+				});
 
 		});
 
 	});
 
-}
+};
 	
 S3Storage.prototype._removeFile = function _removeFile( req, file, cb ) {
 	
@@ -132,10 +135,10 @@ S3Storage.prototype._removeFile = function _removeFile( req, file, cb ) {
 		Key   : file.path
 	}, cb );
 
-}
+};
 
 module.exports = function( opts ) {
 
 	return new S3Storage( opts );
 
-}
+};

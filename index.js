@@ -131,7 +131,7 @@ S3Storage.prototype._handleFile = function _handleFile( req, file, cb ) {
 S3Storage.prototype._removeFile = function _removeFile( req, file, cb ) {
 	
 	this.s3obj.deleteObject({
-		Bucket: this.options.bucker,
+		Bucket: this.options.bucket,
 		Key   : file.path
 	}, cb );
 

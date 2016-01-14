@@ -9,12 +9,12 @@ Multer Storage Engine that uses Amazon S3 as a storage system. Uses an offical A
 	
 ## Dependencies
 * aws-sdk - for communication with the S3
-* crypto  - for generating a psudo random filename if one is not provided
+* crypto  - for generating a pseudo random filename if one is not provided
 * path    - for precise paths handling
 
 ## Usage
 Multer-Storage-S3 follows the naming convention set by an existing DiskStorage storage engine that comes with multer.
-```
+```javascript
 var multer = require( 'multer' );
 var s3 = require( 'multer-storage-s3' );
 var storage = s3({
